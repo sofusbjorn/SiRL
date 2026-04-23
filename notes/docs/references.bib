@@ -1,0 +1,433 @@
+---
+---
+
+@book{Sutton1998,
+  author = {Sutton, Richard S. and Barto, Andrew G.},
+  edition = {Second},
+  keywords = {},
+  publisher = {The MIT Press},
+  title = {Reinforcement Learning: An Introduction},
+  url = {http://incompleteideas.net/book/the-book-2nd.html},
+  year = {2018 }
+}
+
+@book{ruby,
+  title     = {The Ruby Programming Language},
+  author    = {Flanagan, David and Matsumoto, Yukihiro},
+  year      = {2008},
+  publisher = {O'Reilly Media}
+}
+
+@phdthesis{macklinthesis,
+title = "Simulation for Learning and Robotics: Numerical Methods for Contact, Deformation, and Identification",
+abstract = "Robots have the potential to improve the quality of our lives by automating and assisting us in our work. Unfortunately, the design, manufacture, and testing, of real-world robots and their controllers remains time consuming and expensive. Simulation provides a potential solution to this problem, as it can allow gathering data in a safe and relatively inexpensive manner. However, there are many challenges in designing simulation methods for robotics.Modern robots consist of both rigid and deformable parts that may interact in strongly coupled ways through contact, for example, in soft robotic manipulation. Thus, to broaden their applicability, simulators must be capable of modeling a wide range of materials. A second challenge in applying simulation is the large scale data required to drive machine learning techniques, for example, reinforcement learning-based controller design.To generate this data, simulators must be scalable, low-latency, and robust to unseen inputs over a wide range of parameters. Sensitivity to ill-conditioning, e.g.: high mass ratios, can cause fast numerical methods to fail to converge in a reasonable time. On the other hand, accurate solvers that can deal with ill-conditioning are often not fast enough to be used for online/interactive control.Designing numerical methods that overcome these limitations is important to expand simulation capabilities. Finally, a major challenge in simulation is crossing the reality gap. This refers to the ability of a simulator to provide outputs that are predictive of real-world behavior. Since physical models are approximations, and model parameters are often not known, crossing the reality gap is difficult, and methods that can help transfer simulations to the real world are desirable.In the first part of this thesis, I present new simulation techniques focusing on contact modeling between rigid and deformable objects in a unified mathematical formulation. I then develop parallel numerical methods to solve the resulting nonlinear problems. The proposed methods have improved convergence rates to address the issue of sensitivity to ill-conditioning, while maintaining scalability and robustness. The second part of this thesis addresses the sim-to-real problem. I include work that performs classical system identification and validation, followed by stochastic, and differentiable simulation methods to perform automatic parameter estimation. The presented work bridges many aspects of computer graphics and robotics, and provides a framework for future studies to enable the design and control of the next generation of robots.",
+author = "Miles Macklin",
+school = "University of Copenhagen",
+year = "2020",
+language = "English",
+publisher = "Department of Computer Science, Faculty of Science, University of Copenhagen",
+}
+
+@inproceedings{todorov2012mujoco,
+  title={MuJoCo: A physics engine for model-based control},
+  author={Todorov, Emanuel and Erez, Tom and Tassa, Yuval},
+  booktitle={2012 IEEE/RSJ International Conference on Intelligent Robots and Systems},
+  pages={5026--5033},
+  year={2012},
+  organization={IEEE},
+  doi={10.1109/IROS.2012.6386109}
+}
+
+@book{modernrobotics, 
+author = {Lynch, Kevin M. and Park, Frank C.}, 
+title = {Modern Robotics: Mechanics, Planning, and Control}, 
+year = {2017}, 
+isbn = {1107156300}, 
+publisher = {Cambridge University Press}, 
+address = {USA}, 
+edition = {1st}, 
+abstract = {This introduction to robotics offers a distinct and unified perspective of the mechanics, planning and control of robots. Ideal for self-learning, or for courses, as it assumes only freshman-level physics, ordinary differential equations, linear algebra and a little bit of computing background. Modern Robotics presents the state-of-the-art, screw-theoretic techniques capturing the most salient physical features of a robot in an intuitive geometrical way. With numerous exercises at the end of each chapter, accompanying software written to reinforce the concepts in the book and video lectures aimed at changing the classroom experience, this is the go-to textbook for learning about this fascinating subject.} 
+}
+
+@book{featherstone2007, 
+author = {Featherstone, Roy}, 
+title = {Rigid Body Dynamics Algorithms}, 
+year = {2007}, 
+isbn = {0387743146}, 
+publisher = {Springer-Verlag}, 
+address = {Berlin, Heidelberg}
+}
+
+@book{bertsekas2019reinforcement,
+  title={Reinforcement Learning and Optimal Control},
+  author={Bertsekas, D.},
+  isbn={9781886529397},
+  series={Athena Scientific optimization and computation series},
+  url={https://books.google.dk/books?id=ZlBIyQEACAAJ},
+  year={2019},
+  publisher={Athena Scientific}
+}
+
+@book{Betts2010,
+author = {Betts, John T.},
+title = {Practical Methods for Optimal Control and Estimation Using Nonlinear Programming,  Second Edition},
+publisher = {Society for Industrial and Applied Mathematics},
+year = {2010},
+doi = {10.1137/1.9780898718577},
+address = {},
+edition   = {Second},
+URL = {https://epubs.siam.org/doi/abs/10.1137/1.9780898718577},
+eprint = {https://epubs.siam.org/doi/pdf/10.1137/1.9780898718577}
+}
+
+
+@article{Williams_Reinforce92,
+  added-at = {2008-03-11T14:52:34.000+0100},
+  author = {Williams, R. J.},
+  biburl = {https://www.bibsonomy.org/bibtex/294224c3e53bfe80ade7218b3a0283465/idsia},
+  citeulike-article-id = {2374762},
+  interhash = {b90d65a735ae02a940f5075b0fd7ebe7},
+  intrahash = {94224c3e53bfe80ade7218b3a0283465},
+  journal = {Machine Learning},
+  keywords = {daanbib},
+  pages = {229--256},
+  priority = {2},
+  timestamp = {2008-03-11T15:05:47.000+0100},
+  title = {Simple statistical gradient-following algorithms for connectionist reinforcement learning},
+  volume = 8,
+  year = 1992
+}
+
+@article{schulman2017ppo,
+  author = {Schulman, John and Wolski, Filip and Dhariwal, Prafulla and Radford, Alec and Klimov, Oleg},
+  interhash = {f57ff463a90dbafb77d55a25aea8355c},
+  intrahash = {4bbcce6aa1c42ae7f61ef8cf5475aa85},
+  journal = {CoRR},
+  keywords = {DRLAlgoComparison ppo reinforcement_learning},
+  timestamp = {2019-12-18T21:15:59.000+0100},
+  title = {Proximal Policy Optimization Algorithms.},
+  url = {http://dblp.uni-trier.de/db/journals/corr/corr1707.html#SchulmanWDRK17},
+  volume = {abs/1707.06347},
+  year = 2017
+}
+
+
+@inproceedings{worldmodel2018,
+	author = {Ha, David and Schmidhuber, J\"{u}rgen},
+	booktitle = {Advances in Neural Information Processing Systems},
+	editor = {S. Bengio and H. Wallach and H. Larochelle and K. Grauman and N. Cesa-Bianchi and R. Garnett},
+	publisher = {Curran Associates, Inc.},
+	title = {Recurrent World Models Facilitate Policy Evolution},
+	url = {https://proceedings.neurips.cc/paper_files/paper/2018/file/2de5d16682c3c35007e4e92982f1a2ba-Paper.pdf},
+	volume = {31},
+	year = {2018},
+	bdsk-url-1 = {https://proceedings.neurips.cc/paper_files/paper/2018/file/2de5d16682c3c35007e4e92982f1a2ba-Paper.pdf}}
+
+
+@InProceedings{bettergrad_icml22,
+  title = 	 {Do Differentiable Simulators Give Better Policy Gradients?},
+  author =       {Suh, Hyung Ju and Simchowitz, Max and Zhang, Kaiqing and Tedrake, Russ},
+  booktitle = 	 {Proceedings of the 39th International Conference on Machine Learning},
+  pages = 	 {20668--20696},
+  year = 	 {2022},
+  editor = 	 {Chaudhuri, Kamalika and Jegelka, Stefanie and Song, Le and Szepesvari, Csaba and Niu, Gang and Sabato, Sivan},
+  volume = 	 {162},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {17--23 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {https://proceedings.mlr.press/v162/suh22b/suh22b.pdf},
+  url = 	 {https://proceedings.mlr.press/v162/suh22b.html},
+  abstract = 	 {Differentiable simulators promise faster computation time for reinforcement learning by replacing zeroth-order gradient estimates of a stochastic objective with an estimate based on first-order gradients. However, it is yet unclear what factors decide the performance of the two estimators on complex landscapes that involve long-horizon planning and control on physical systems, despite the crucial relevance of this question for the utility of differentiable simulators. We show that characteristics of certain physical systems, such as stiffness or discontinuities, may compromise the efficacy of the first-order estimator, and analyze this phenomenon through the lens of bias and variance. We additionally propose an $\alpha$-order gradient estimator, with $\alpha \in [0,1]$, which correctly utilizes exact gradients to combine the efficiency of first-order estimates with the robustness of zero-order methods. We demonstrate the pitfalls of traditional estimators and the advantages of the $\alpha$-order estimator on some numerical examples.}
+}
+
+
+@article{anymal_scirob2018,
+	abstract = {A method for learning agile control policies uses simulated data to enable precise, efficient movements in a complex physical robot. Legged robots pose one of the greatest challenges in robotics. Dynamic and agile maneuvers of animals cannot be imitated by existing methods that are crafted by humans. A compelling alternative is reinforcement learning, which requires minimal craftsmanship and promotes the natural evolution of a control policy. However, so far, reinforcement learning research for legged robots is mainly limited to simulation, and only few and comparably simple examples have been deployed on real systems. The primary reason is that training with real robots, particularly with dynamically balancing systems, is complicated and expensive. In the present work, we introduce a method for training a neural network policy in simulation and transferring it to a state-of-the-art legged system, thereby leveraging fast, automated, and cost-effective data generation schemes. The approach is applied to the ANYmal robot, a sophisticated medium-dog--sized quadrupedal system. Using policies trained in simulation, the quadrupedal machine achieves locomotion skills that go beyond what had been achieved with prior methods: ANYmal is capable of precisely and energy-efficiently following high-level body velocity commands, running faster than before, and recovering from falling even in complex configurations.},
+	author = {Jemin Hwangbo and Joonho Lee and Alexey Dosovitskiy and Dario Bellicoso and Vassilios Tsounis and Vladlen Koltun and Marco Hutter},
+	doi = {10.1126/scirobotics.aau5872},
+	eprint = {https://www.science.org/doi/pdf/10.1126/scirobotics.aau5872},
+	journal = {Science Robotics},
+	number = {26},
+	pages = {eaau5872},
+	title = {Learning agile and dynamic motor skills for legged robots},
+	url = {https://www.science.org/doi/abs/10.1126/scirobotics.aau5872},
+	volume = {4},
+	year = {2019},
+	bdsk-url-1 = {https://www.science.org/doi/abs/10.1126/scirobotics.aau5872},
+	bdsk-url-2 = {https://doi.org/10.1126/scirobotics.aau5872}}
+
+@inproceedings{Engstrom2020Implementation,
+title={Implementation Matters in Deep RL: A Case Study on PPO and TRPO},
+author={Logan Engstrom and Andrew Ilyas and Shibani Santurkar and Dimitris Tsipras and Firdaus Janoos and Larry Rudolph and Aleksander Madry},
+booktitle={International Conference on Learning Representations},
+year={2020},
+url={https://openreview.net/forum?id=r1etN1rtPB}
+}
+
+@inproceedings{dqn2016, 
+author = {Hasselt, Hado van and Guez, Arthur and Silver, David}, 
+title = {Deep reinforcement learning with double Q-Learning}, 
+year = {2016}, 
+publisher = {AAAI Press}, 
+booktitle = {Proceedings of the Thirtieth AAAI Conference on Artificial Intelligence}, 
+pages = {2094–2100}, 
+numpages = {7}, 
+location = {Phoenix, Arizona}, 
+series = {AAAI'16} }
+
+
+
+@InProceedings{sac2018,
+  title = 	 {Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor},
+  author =       {Haarnoja, Tuomas and Zhou, Aurick and Abbeel, Pieter and Levine, Sergey},
+  booktitle = 	 {Proceedings of the 35th International Conference on Machine Learning},
+  pages = 	 {1861--1870},
+  year = 	 {2018},
+  editor = 	 {Dy, Jennifer and Krause, Andreas},
+  volume = 	 {80},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {10--15 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v80/haarnoja18b/haarnoja18b.pdf},
+  url = 	 {https://proceedings.mlr.press/v80/haarnoja18b.html},
+}
+
+
+@InProceedings{fastergrad_l4dc2021,
+  title = 	 {Faster Policy Learning with Continuous-Time Gradients},
+  author =       {Ainsworth, Samuel and Lowrey, Kendall and Thickstun, John and Harchaoui, Zaid and Srinivasa, Siddhartha},
+  booktitle = 	 {Proceedings of the 3rd Conference on Learning for Dynamics and Control},
+  pages = 	 {1054--1067},
+  year = 	 {2021},
+  editor = 	 {Jadbabaie, Ali and Lygeros, John and Pappas, George J. and A.&nbsp;Parrilo, Pablo and Recht, Benjamin and Tomlin, Claire J. and Zeilinger, Melanie N.},
+  volume = 	 {144},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {07 -- 08 June},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v144/ainsworth21a/ainsworth21a.pdf},
+  url = 	 {https://proceedings.mlr.press/v144/ainsworth21a.html},
+  abstract = 	 {We study the estimation of policy gradients for continuous-time systems with known dynamics. By reframing policy learning in continuous-time, we show that it is possible construct a more efficient and accurate gradient estimator. The standard back-propagation through time estimator (BPTT) computes exact gradients for a crude discretization of the continuous-time system. In contrast, we approximate continuous-time gradients in the original system. With the explicit goal of estimating continuous-time gradients, we are able to discretize adaptively and construct a more efficient policy gradient estimator which we call the Continuous-Time Policy Gradient (CTPG). We show that replacing BPTT policy gradients with more efficient CTPG estimates results in faster and more robust learning in a variety of control tasks and simulators.}
+}
+
+@article{crossentropy2005,
+title = "A Tutorial on the Cross-Entropy Method",
+abstract = "The cross-entropy (CE) method is a new generic approach to combinatorial and multi-extremal optimization and rare event simulation. The purpose of this tutorial is to give a gentle introduction to the CE method. We present the CE methodology, the basic algorithm and its modi{\"i}¿½{\"i}¿½?cations, and discuss applications in combinatorial optimization and machine learning.",
+keywords = "Cross-entropy method, Monte-Carlo simulation, Randomized optimization, Machine learning, Rare events, 2023 OA procedure",
+author = "{de Boer}, Pieter-Tjerk and Kroese, {Dirk P.} and Shie Mannor and Rubinstein, {Reuven Y.}",
+year = "2005",
+month = jan,
+doi = "10.1007/s10479-005-5724-z",
+language = "English",
+volume = "134",
+pages = "19--67",
+journal = "Annals of operations research",
+issn = "0254-5330",
+publisher = "Springer",
+number = "1",
+}
+
+@article{pathintegral2010,
+  author  = {Evangelos Theodorou and Jonas Buchli and Stefan Schaal},
+  title   = {A Generalized Path Integral Control Approach to Reinforcement Learning},
+  journal = {Journal of Machine Learning Research},
+  year    = {2010},
+  volume  = {11},
+  number  = {104},
+  pages   = {3137-3181},
+  url     = {http://jmlr.org/papers/v11/theodorou10a.html}
+}
+
+@inproceedings{ilqr2004,
+  added-at = {2004-10-26T00:00:00.000+0200},
+  author = {Li, Weiwei and Todorov, Emanuel},
+  biburl = {https://www.bibsonomy.org/bibtex/2a3b11d9fa2f9cb824ba5933aef6f5209/dblp},
+  booktitle = {ICINCO (1)},
+  crossref = {conf/icinco/2004},
+  date = {2004-10-26},
+  description = {dblp},
+  editor = {Araújo, Helder and Vieira, Alves and Braz, José and Encarnação, Bruno and Carvalho, Marina},
+  interhash = {6ada0eb189107ce8cd0a66d60afd957d},
+  intrahash = {a3b11d9fa2f9cb824ba5933aef6f5209},
+  isbn = {972-8865-12-0},
+  keywords = {dblp},
+  pages = {222-229},
+  publisher = {INSTICC Press},
+  timestamp = {2004-10-26T00:00:00.000+0200},
+  title = {Iterative Linear Quadratic Regulator Design for Nonlinear Biological Movement Systems.},
+  url = {http://dblp.uni-trier.de/db/conf/icinco/icinco2004.html#LiT04},
+  year = 2004
+}
+
+
+@inproceedings{deepequilibriumlayers,
+	author = {Bai, Shaojie and Kolter, J. Zico and Koltun, Vladlen},
+	booktitle = {Advances in Neural Information Processing Systems},
+	editor = {H. Wallach and H. Larochelle and A. Beygelzimer and F. d\textquotesingle Alch\'{e}-Buc and E. Fox and R. Garnett},
+	publisher = {Curran Associates, Inc.},
+	title = {Deep Equilibrium Models},
+	url = {https://proceedings.neurips.cc/paper_files/paper/2019/file/01386bd6d8e091c2ab4c7c7de644d37b-Paper.pdf},
+	volume = {32},
+	year = {2019},
+	bdsk-url-1 = {https://proceedings.neurips.cc/paper_files/paper/2019/file/01386bd6d8e091c2ab4c7c7de644d37b-Paper.pdf}}
+
+@inproceedings{
+grathwohl2018scalable,
+title={Scalable Reversible Generative Models with Free-form Continuous Dynamics},
+author={Will Grathwohl and Ricky T. Q. Chen and Jesse Bettencourt and David Duvenaud},
+booktitle={International Conference on Learning Representations},
+year={2019},
+url={https://openreview.net/forum?id=rJxgknCcK7},
+}
+
+@inproceedings{
+pointflow,
+title = "Pointflow: 3D point cloud generation with continuous normalizing flows",
+abstract = "As 3D point clouds become the representation of choice for multiple vision and graphics applications, the ability to synthesize or reconstruct high-resolution, high-fidelity point clouds becomes crucial. Despite the recent success of deep learning models in discriminative tasks of point clouds, generating point clouds remains challenging. This paper proposes a principled probabilistic framework to generate 3D point clouds by modeling them as a distribution of distributions. Specifically, we learn a two-level hierarchy of distributions where the first level is the distribution of shapes and the second level is the distribution of points given a shape. This formulation allows us to both sample shapes and sample an arbitrary number of points from a shape. Our generative model, named PointFlow, learns each level of the distribution with a continuous normalizing flow. The invertibility of normalizing flows enables the computation of the likelihood during training and allows us to train our model in the variational inference framework. Empirically, we demonstrate that PointFlow achieves state-of-the-art performance in point cloud generation. We additionally show that our model can faithfully reconstruct point clouds and learn useful representations in an unsupervised manner. The code is available at https://github.com/stevenygd/PointFlow.",
+author = "Guandao Yang and Xun Huang and Zekun Hao and Liu, {Ming Yu} and Serge Belongie and Bharath Hariharan",
+note = "Funding Information: This work was supported in part by a research gift from Magic Leap. Xun Huang was supported by NVIDIA Graduate Fellowship. Publisher Copyright: {\textcopyright} 2019 IEEE.; 17th IEEE/CVF International Conference on Computer Vision, ICCV 2019 ; Conference date: 27-10-2019 Through 02-11-2019",
+year = "2019",
+month = oct,
+doi = "10.1109/ICCV.2019.00464",
+language = "English",
+pages = "4540--4549",
+journal = "Proceedings of the IEEE International Conference on Computer Vision",
+issn = "1550-5499",
+publisher = "Institute of Electrical and Electronics Engineers Inc.",
+}
+
+@inproceedings{cvxpylayers2019,
+  author={Agrawal, A. and Amos, B. and Barratt, S. and Boyd, S. and Diamond, S. and Kolter, Z.},
+  title={Differentiable Convex Optimization Layers},
+  booktitle={Advances in Neural Information Processing Systems},
+  year={2019},
+}
+
+@inproceedings{Qiao2021Efficient,
+author  = {Qiao, Yi-Ling and Liang, Junbang and Koltun, Vladlen and Lin, Ming C.},
+title  = {Efficient Differentiable Simulation of Articulated Bodies},
+booktitle = {ICML},
+year  = {2021},
+}
+
+@article{gps2016levine,
+  author  = {Sergey Levine and Chelsea Finn and Trevor Darrell and Pieter Abbeel},
+  title   = {End-to-End Training of Deep Visuomotor Policies},
+  journal = {Journal of Machine Learning Research},
+  year    = {2016},
+  volume  = {17},
+  number  = {39},
+  pages   = {1--40},
+  url     = {http://jmlr.org/papers/v17/15-522.html}
+}
+
+@INPROCEEDINGS{domarand2017iros,
+  author={Tobin, Josh and Fong, Rachel and Ray, Alex and Schneider, Jonas and Zaremba, Wojciech and Abbeel, Pieter},
+  booktitle={2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={Domain randomization for transferring deep neural networks from simulation to the real world}, 
+  year={2017},
+  volume={},
+  number={},
+  pages={23-30},
+  keywords={Robots;Training;Adaptation models;Three-dimensional displays;Cameras;Solid modeling;Data models},
+  doi={10.1109/IROS.2017.8202133}}
+
+@article{real2sim2022cgf,
+title = "Differentiable Depth for Real2Sim Calibration of Soft Body Simulations",
+abstract = "In this work, we present a novel approach for calibrating material model parameters for soft body simulations using real data. We use a fully differentiable pipeline, combining a differentiable soft body simulator and differentiable depth rendering, which permits fast gradient-based optimizations. Our method requires no data pre-processing, and minimal experimental set-up, as we directly minimize the L2-norm between raw LIDAR scans and rendered simulation states. In essence, we provide the first marker-free approach for calibrating a soft-body simulator to match observed real-world deformations. Our approach is inexpensive as it solely requires a consumer-level LIDAR sensor compared to acquiring a professional marker-based motion capture system. We investigate the effects of different material parameterizations and evaluate convergence for parameter optimization in both single and multi-material scenarios of varying complexity. Finally, we show that our set-up can be extended to optimize for dynamic behaviour as well.",
+keywords = "animation, methods and applications, physically based animation, ray tracing, rendering, robotics",
+author = "K. Arnavaz and Nielsen, {M. Kragballe} and Kry, {P. G.} and M. Macklin and K. Erleben",
+note = "Publisher Copyright: {\textcopyright} 2022 The Authors. Computer Graphics Forum published by Eurographics - The European Association for Computer Graphics and John Wiley & Sons Ltd.",
+year = "2023",
+doi = "10.1111/cgf.14720",
+language = "English",
+volume = "42",
+pages = "277--289",
+journal = "Computer Graphics Forum (Print)",
+issn = "0167-7055",
+publisher = "Wiley-Blackwell",
+number = "1",
+}
+
+@book{slotine1991,
+	author = {Slotine, Jean-Jacques E. and Li, Weiping.},
+	title = {Applied nonlinear control },
+	publisher = {Prentice Hall,},
+	year = {1991},
+	address = {New Jersey, USA}
+}
+
+@article{BayesSimIG2021antonova,
+  author       = {Rika Antonova and
+                  Fabio Ramos and
+                  Rafael Possas and
+                  Dieter Fox},
+  title        = {BayesSimIG: Scalable Parameter Inference for Adaptive Domain Randomization
+                  with IsaacGym},
+  journal      = {CoRR},
+  volume       = {abs/2107.04527},
+  year         = {2021},
+  url          = {https://arxiv.org/abs/2107.04527},
+  eprinttype    = {arXiv},
+  eprint       = {2107.04527},
+  timestamp    = {Tue, 18 Oct 2022 08:35:40 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2107-04527.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+@InProceedings{activeDR2020Corl,
+  title = 	 {Active Domain Randomization},
+  author =       {Mehta, Bhairav and Diaz, Manfred and Golemo, Florian and Pal, Christopher J. and Paull, Liam},
+  booktitle = 	 {Proceedings of the Conference on Robot Learning},
+  pages = 	 {1162--1176},
+  year = 	 {2020},
+  editor = 	 {Kaelbling, Leslie Pack and Kragic, Danica and Sugiura, Komei},
+  volume = 	 {100},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {30 Oct--01 Nov},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v100/mehta20a/mehta20a.pdf},
+  url = 	 {https://proceedings.mlr.press/v100/mehta20a.html},
+  abstract = 	 {Domain randomization is a popular technique for improving domain transfer, often used in a zero-shot setting when the target domain is unknown or cannot easily be used for training. In this work, we empirically examine the effects of domain randomization on agent generalization. Our experiments show that domain randomization may lead to suboptimal, high-variance policies, which we attribute to the uniform sampling of environment parameters. We propose Active Domain Randomization, a novel algorithm that learns a parameter sampling strategy. Our method looks for the most informative environment variations within the given randomization ranges by leveraging the discrepancies of policy rollouts in randomized and reference environment instances. We find that training more frequently on these instances leads to better overall agent generalization. Our experiments across various physics-based simulated and real-robot tasks show that this enhancement leads to more robust, consistent policies.}
+}
+
+@inproceedings{SiggraphContact22,
+  author = {Andrews, Sheldon and Erleben, Kenny and Ferguson, Zachary},
+  title = {Contact and Friction Simulation for Computer Graphics},
+  year = {2022},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {},
+  doi = {},
+  booktitle = {ACM SIGGRAPH 2022 Courses},
+  articleno = {2},
+  numpages = {124},
+  location = {Hybrid Event, Vancouver, Canada},
+  series = {SIGGRAPH '22}
+}
+
+@inproceedings{explicitconstr_nips2020,
+author = {Finzi, Marc and Wang, Ke Alexander and Wilson, Andrew Gordon},
+title = {Simplifying hamiltonian and lagrangian neural networks via explicit constraints},
+year = {2020},
+isbn = {9781713829546},
+publisher = {Curran Associates Inc.},
+address = {Red Hook, NY, USA},
+abstract = {Reasoning about the physical world requires models that are endowed with the right inductive biases to learn the underlying dynamics. Recent works improve generalization for predicting trajectories by learning the Hamiltonian or La-grangian of a system rather than the differential equations directly. While these methods encode the constraints of the systems using generalized coordinates, we show that embedding the system into Cartesian coordinates and enforcing the constraints explicitly with Lagrange multipliers dramatically simplifies the learning problem. We introduce a series of challenging chaotic and extended-body systems, including systems with N-pendulums, spring coupling, magnetic fields, rigid rotors, and gyroscopes, to push the limits of current approaches. Our experiments show that Cartesian coordinates with explicit constraints lead to a 100x improvement in accuracy and data efficiency.},
+booktitle = {Proceedings of the 34th International Conference on Neural Information Processing Systems},
+articleno = {1164},
+numpages = {10},
+location = {Vancouver, BC, Canada},
+series = {NIPS '20}
+}
+
+@INPROCEEDINGS{maximallqr_icra2021,
+  author={Brüdigam, Jan and Manchester, Zachary},
+  booktitle={2021 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={Linear-Quadratic Optimal Control in Maximal Coordinates}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={9775-9781},
+  keywords={Regulators;Optimal control;Kinematics;Cost function;Robustness;Numerical models;Control theory},
+  doi={10.1109/ICRA48506.2021.9561871}}

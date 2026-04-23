@@ -1,0 +1,26 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 1508da9a-7229-46e3-8e24-950df95f0127
+  # title:
+  # description:
+  keywords: []
+  authors: []
+  github: https://github.com/diku-dk/SiRL
+  jupyter:
+    server: 
+      url: http://localhost:8888
+      token: sirl
+    # start local jupyter server with 
+    # jupyter server --IdentityProvider.token="sirl" --ServerApp.port="8888" --NotebookApp.allow_origin='http://localhost:3000'
+  # bibliography: []
+site:
+  template: book-theme
+  title: Simulation-based Reinforcement Learning Course Notes
+  options:
+    logo: logo.png
+  nav: []
+  actions:
+    - title: Learn More
+      url: https://mystmd.org/guide
+  domains: []

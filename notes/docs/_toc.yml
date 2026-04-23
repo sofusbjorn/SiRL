@@ -1,0 +1,24 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+# - file: markdown
+# - file: notebooks
+# - file: markdown-notebooks
+- file: contents/1_RLSystem/notebooks
+- file: contents/2_LabVisionData/notebooks
+- file: contents/3_ArticulatedDynamics/notebooks
+
+  sections:
+    - file: contents/3_ArticulatedDynamics/abd_notebook_1
+    - file: contents/3_ArticulatedDynamics/abd_notebook_2
+    - file: contents/3_ArticulatedDynamics/abd_notebook_3
+    - file: contents/3_ArticulatedDynamics/abd_notebook_4
+
+- file: contents/4_AutoDiff/notebooks
+- file: contents/5_OptimalControl/notebooks
+- file: contents/6_AdjointMethod/notebooks
+- file: contents/7_SimRL/notebooks
+
