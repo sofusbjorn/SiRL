@@ -5,6 +5,7 @@ requires-python = ">=3.11"
 dependencies = [
     "imageio>=2.37.3",
     "mujoco>=3.7.0",
+    "natnet>=0.2.0",
     "numpy>=2.4.4",
     "stable-baselines3>=2.8.0",
 ]
