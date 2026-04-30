@@ -8,6 +8,7 @@ dependencies = [
     "natnet>=0.2.0",
     "numpy>=2.4.4",
     "stable-baselines3>=2.8.0",
+    "ur-rtde>=1.6.3",
 ]
 
 [dependency-groups]
