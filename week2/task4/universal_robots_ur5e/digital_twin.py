@@ -1,10 +1,12 @@
 import mujoco
 import mujoco.viewer
 import time
-import rtde_receive 
+import rtde_receive
+from pathlib import Path
 
 # Load model from XML files
-model = mujoco.MjModel.from_xml_path("scene.xml")  # or model.xml
+_here = Path(__file__).parent
+model = mujoco.MjModel.from_xml_path(str(_here / 'scene.xml'))
 data = mujoco.MjData(model)
 
 # Connect to the robot using RTDE
@@ -15,10 +17,8 @@ rtde_r = rtde_receive.RTDEReceiveInterface(ROBOT_IP)
 def update_model_from_robot(model, data, rtde_r):
     # Get the current joint positions from the robot
     joint_positions = rtde_r.getActualQ()
-    print("Current joint positions from robot: ", joint_positions, flush=True)
     
     # Update the model's joint positions
-    print("Current joint positions in model: ", data.qpos, flush=True)
     data.qpos = joint_positions
     
     return data
@@ -26,9 +26,8 @@ def update_model_from_robot(model, data, rtde_r):
 
 
 # Launch a viewer
-with mujoco.viewer.launch(model, data) as viewer:
+with mujoco.viewer.launch_passive(model, data) as viewer:
     while viewer.is_running():
-        print("Updating model from robot...", flush=True)
         # Update the model's joint positions from the robot
         data = update_model_from_robot(model, data, rtde_r)
         mujoco.mj_step(model, data)
