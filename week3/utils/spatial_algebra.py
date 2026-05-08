@@ -1,7 +1,7 @@
 from typing import NamedTuple
 
-from articulated_dynamics.math_utils import nplib
-import articulated_dynamics.math_utils as math
+from math_utils import nplib
+import math_utils as math
 
 class Transform(NamedTuple):
     """

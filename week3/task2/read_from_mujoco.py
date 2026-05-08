@@ -1,10 +1,7 @@
 import mujoco
-import mujoco.viewer
-import time
 from pathlib import Path
 from spatial_algebra import Transform, Motion
 import math_utils as math
-import numpy as np
 
 # Load model from XML files
 _here = Path(__file__).parent
