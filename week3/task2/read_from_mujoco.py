@@ -1,20 +1,21 @@
-import mujoco
+from mujoco import MjModel, MjData, mj_forward, mj_step 
 from pathlib import Path
 from spatial_algebra import Transform, Motion
 import math_utils as math
+import numpy as np
 
 # Load model from XML files
 _here = Path(__file__).parent
-model = mujoco.MjModel.from_xml_path(str(_here / 'threelinks.xml'))
-data = mujoco.MjData(model)
+model = MjModel.from_xml_path(str(_here / 'threelinks.xml'))
+data = MjData(model)
 
 
 
 # # Launch a viewer
-# with mujoco.viewer.launch_passive(model, data) as viewer:
+# with viewer.launch_passive(model, data) as viewer:
 #     while viewer.is_running():
 #         # Update the model's joint positions from the robot
-#         mujoco.mj_step(model, data)
+#         mj_step(model, data)
 #         print(model.geom_pos)
 #         print(model.geom_quat)
 #         viewer.sync()
@@ -24,7 +25,7 @@ data = mujoco.MjData(model)
 def transform_links(model, data):
 
     #uncomment to test the results when some joints are not at zero position
-    #data.qpos[model.jnt_qposadr[1]] = 0.5
+    #data.qpos[2] = np.pi/2
 
     trans_list= []
     # for each n body: 
@@ -43,7 +44,7 @@ def transform_links(model, data):
         
     return trans_list
 
-def spatial_velocities(model, data):
+def spatial_velocities(model: MjModel, data: MjData):
     #Retrieve the transforms for each link
     trans_list = transform_links(model, data)
     #Instantiate Vi list - V0 is velocity of world, which is zero
@@ -67,9 +68,18 @@ def spatial_velocities(model, data):
     return vel_list
 
 
-if __name__ == "__main__":
-    mujoco.mj_forward(model, data)
 
-    print(transform_links(model, data))
-    #print(spatial_velocities(model, data))
+def forward_kinematics(model, data) -> tuple[list[Transform], list[Motion]]: 
+    trans_list = transform_links(model, data)
+    vel_list = spatial_velocities(model, data)
+    return trans_list, vel_list
+
+
+if __name__ == "__main__":
+    mj_forward(model, data)
+    print(model.links)
+    print(model.num_links())
+
+    #print(transform_links(model, data))
+    print(spatial_velocities(model, data))
 
