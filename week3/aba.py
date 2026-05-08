@@ -1,43 +1,25 @@
 from typing import Any
 import numpy as np 
 from numpy.typing import NDArray
-from read_from_mujoco import forward_kinematics
+from forward_kin import forward_kinematics
 from articulated_system import ArticulatedSystem
 from spatial_algebra import Inertia, Motion
 from ThreeLinks import ThreeLinks
 
 def forward_dynamics_aba(
     sys: ArticulatedSystem,
-    q: list[float],
-    qd: list[float],
-    tau,
+    q: NDArray[Any],
+    qd: NDArray[Any],
+    tau: NDArray[Any],
+    verbose: bool = False,
 ) -> NDArray[Any]:
     # Implements Featherstone's Articulated Body Algorithm (ABA).
     # See pseudocode on p.132 of "Rigid Body Dynamics Algorithms".
     # Given joint positions q, velocities qd, and applied torques tau,
     # this returns joint accelerations qdd.
 
-    # --- Loop 1 (forward, root → tip): compute poses and velocities ---
-    #
-    # link_poses : list of spatial transforms, one per link.
-    #   link_poses[i] is the 6×6 (or equivalent) transform that maps vectors
-    #   from the world/base frame into link i's body frame.
-    #
-    # link_vel : list of spatial velocities (6-vectors [ω; v]), one per link,
-    #   as returned by forward_kinematics. The frame these are expressed in
-    #   depends on the forward_kinematics implementation — check the docstring.
-    link_poses, link_vel = forward_kinematics(sys, q, qd)
-
-    # link_vel : list of spatial velocities, one per link, expressed in each
-    #   link's center-of-mass (CoM) body frame. This is what the ABA needs
-    #   because the rigid-body inertia tensors (sys.links[i].inertia) are
-    #   defined with respect to the CoM frame.
-    #   If link_vel is already in the CoM frame you can use it directly;
-    #   otherwise use link_poses[i] to transform link_vel[i] into the CoM frame.
-    #
-    # TODO: build link_vel (a list of length sys.num_links()) here.
-    # Example structure (replace with correct transform):
-    #   link_vel = [<transform link_vel[i] to CoM frame> for i in range(sys.num_links())]
+    link_poses, full_link_vel = forward_kinematics(sys, q, qd)
+    link_vel = full_link_vel[1:]
 
     # I_a_lst : list of articulated-body inertia matrices, one per link.
     #   Initialized to each link's own rigid-body inertia (Featherstone eq. 7.2a).
@@ -70,7 +52,7 @@ def forward_dynamics_aba(
     #   velocity v_i. Conceptually it is the Coriolis/centrifugal term for
     #   the joint. It is added back in Loop 3 when computing link accelerations.
     #   Each joint is assumed to have exactly 1 DOF (hence qd[..., i]).
-    zeta_lst = [link_vel[i].cross_motion(S_ss_lst[i]*qd[..., i]) for i
+    zeta_lst = [link_vel[i].cross_motion(S_ss_lst[i]*qd[i]) for i
                 in range(sys.num_links())]
 
     # --- Loop 2 (backward, tip → root): accumulate articulated-body inertia ---
@@ -99,14 +81,14 @@ def forward_dynamics_aba(
     for i in range(sys.num_links() - 1, -1, -1):
         U_lst[i] = I_a_lst[i].mul(S_ss_lst[i])                        # Force: I_a * S
         D_lst[i] = S_ss_lst[i].dot_force(U_lst[i])                    # scalar: S^T * U
-        u_lst[i] = tau[..., i] - S_ss_lst[i].dot_force(p_a_lst[i])   # scalar: tau - S^T * p_a
+        u_lst[i] = tau[i] - S_ss_lst[i].dot_force(p_a_lst[i])   # scalar: tau - S^T * p_a
 
         parent = sys.parents[i]
         if parent >= 0:
             # Reduced articulated-body inertia: I_a_i - U_i * D_i^{-1} * U_i^T
             # (Featherstone eq. 7.25). from_dyad builds the outer-product term.
             I_a_reduced = I_a_lst[i] - Inertia.from_dyad(U_lst[i]) * (1.0 / D_lst[i])
-            I_a_lst[parent] = I_a_lst[parent] + I_a_reduced.apply_transform(link_poses[i])
+            I_a_lst[parent] = I_a_lst[parent] + I_a_reduced.apply_transform(link_poses[i].create_inverse())
 
             # Propagate bias force to parent (Featherstone eq. 7.26).
             # apply_transform with the child→parent transform maps a force from
@@ -114,7 +96,7 @@ def forward_dynamics_aba(
             p_a_prop = (p_a_lst[i]
                         + I_a_lst[i].mul(zeta_lst[i])
                         + U_lst[i] * (u_lst[i] / D_lst[i]))
-            p_a_lst[parent] = p_a_lst[parent] + p_a_prop.apply_transform(link_poses[i])
+            p_a_lst[parent] = p_a_lst[parent] + p_a_prop.apply_transform(link_poses[i].create_inverse())
 
     # --- Loop 3 (forward, root → tip): compute joint accelerations ---
     #
@@ -156,12 +138,53 @@ def forward_dynamics_aba(
         a_lst[i] = a_parent_in_i + S_ss_lst[i] * qdd_i + zeta_lst[i]
 
         qdd.append(qdd_i[..., None])
+    if verbose:
+        print("\n=== DEBUG (q=0, qd=0, tau=0) ===")
+        print("S_ss_lst:")
+        for i, S in enumerate(S_ss_lst):
+            print(f"  link {i}: ang={S.ang}, lin={S.lin}")
+
+        print("\nlink_vel (CoM frame):")
+        for i, v in enumerate(link_vel):
+            print(f"  link {i}: ang={v.ang}, lin={v.lin}")
+
+        print("\nlink_poses (child→parent transforms):")
+        for i, T in enumerate(link_poses):
+            print(f"  link {i}: trans={T.trans}, rot={T.rot}")
+
+        print("\nLoop 2 results:")
+        for i in range(sys.num_links()):
+            print(f"  link {i}: D={D_lst[i]:.4f}, u={u_lst[i]:.4f}")
+
+        print("\na_0:", a_0)
 
     return np.concatenate(qdd, axis=-1).squeeze()
 
 
 if __name__ == "__main__": 
-    sys = ThreeLinks()
-    g = [0,0,1] 
-    gd=[0,0,0] 
+    import mujoco
+    from pathlib import Path
 
+    # Load model from XML files
+    # Load model from XML files
+    _here = Path(__file__).parent
+    model = mujoco.MjModel.from_xml_path(str(_here / 'threelinks.xml'))
+    data = mujoco.MjData(model)
+
+    sys = ThreeLinks()
+
+    q = np.array([0,0,1] )
+    qd = np.array([0,0,1])
+    tau = np.array([0,0,0])
+    
+    qdd = forward_dynamics_aba(sys=sys, q=q, qd=qd, tau=tau)
+
+    data.qpos = q
+    data.qvel = qd
+    data.qfrc_applied = tau
+
+    mujoco.mj_forward(model, data)
+
+    print("\n=== RESULTS ===")
+    print("qdd (Ours):", qdd)
+    print("qdd (MuJoCo):", data.qacc)

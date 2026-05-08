@@ -1,17 +1,11 @@
+from typing import Any
+from numpy.typing import NDArray
 from articulated_system import ArticulatedSystem
-from mujoco import MjModel, MjData
-from pathlib import Path
 from spatial_algebra import Transform, Motion
 import math_utils as math
-import numpy as np
-
-# Load model from XML files
-_here = Path(__file__).parent
-model = MjModel.from_xml_path(str(_here / 'threelinks.xml'))
-data = MjData(model)
 
 
-def transform_links(sys: ArticulatedSystem, q: list[float]):
+def transform_links(sys: ArticulatedSystem, q: list[float] | NDArray[Any]):
     trans_list= []
     # for each n body: 
     for i in range(sys.num_links()):
@@ -37,9 +31,7 @@ def transform_links(sys: ArticulatedSystem, q: list[float]):
 def spatial_velocities(
     sys: ArticulatedSystem,  trans_list: list[Transform], qd: list[float]
 ):
-    #Instantiate Vi list - V0 is velocity of world, which is zero
     vel_list = [Motion()]
-
     for i in range(sys.num_links()):
         #We assume all joints are hinge joints
         #Retrieve the joint velocity and axis
@@ -57,8 +49,8 @@ def spatial_velocities(
 
 def forward_kinematics(
     sys: ArticulatedSystem,
-    q: list[float],
-    qd: list[float],
+    q: list[float] | NDArray[Any],
+    qd: list[float] | NDArray[Any],
 ) -> tuple[list[Transform], list[Motion]]:
     trans_list = transform_links(sys, q)
     vel_list = spatial_velocities(sys, trans_list, qd)
@@ -68,7 +60,8 @@ def forward_kinematics(
 
 if __name__ == "__main__":
     from ThreeLinks import ThreeLinks
-
+    sys = ThreeLinks()
+    from ThreeLinks import ThreeLinks
     print("Testing forward kinematics on ThreeLinks system:")
     print("-----------------------------------------------\n")
     sys = ThreeLinks()
