@@ -1,16 +1,21 @@
-from articulated_dynamics.math_utils import nplib
+from math_utils import nplib
 
-from articulated_dynamics.spatial_algebra import Transform, Motion, Force, Inertia
+from spatial_algebra import Transform, Motion, Inertia
 
 class Link:
     def __init__(self, name) -> None:
         self.name = name                    #must be unique so we can quickly index the link
         self.prev_transform = Transform()   #predecessor joint frame relative to parent link frame
         self.joint_frame = Transform()      #joint frame w.r.t. current link frame
-                                            #note for these transforms, it is more intuitive for users to define [R, t; 0, 1] with both R and t w.r.t. the reference frame, i.e. relative configuration
-                                            #do not regard this as a displacement operator as the series of joint DOFs to populate coordinate transformation matrix
-                                            #for instance, joint motions each expressed in the local frame, will lead to right multiplication of transformation matrices
-                                            #i.e. [R, 0; 0, 1]*[I, t; 0, 1]. In this case, it will yield [R, Rt; 0, 1] which correspondes to coordinate transforms [R^T, -t; 0, 1]
+                                            #note for these transforms, it is more intuitive for users to define 
+                                            #[R, t; 0, 1] with both R and t w.r.t. the reference frame,
+                                            #i.e. relative configuration
+                                            #do not regard this as a displacement operator as the series 
+                                            #of joint DOFs to populate coordinate transformation matrix
+                                            #for instance, joint motions each expressed in the local frame,
+                                            #will lead to right multiplication of transformation matrices
+                                            #i.e. [R, 0; 0, 1]*[I, t; 0, 1]. In this case, it will yield 
+                                            #[R, Rt; 0, 1] which correspondes to coordinate transforms [R^T, -t; 0, 1]
         self.joint_dofs = Weld()            #by default the link is welded to its parent
         
         #default inertia with inertia frame same as the link frame, cubnoid with unit sizes and mass  
@@ -25,7 +30,13 @@ class Link:
         #           sphere: x - radius
         #pos/quat:  pose w.r.t. link frame   
         #color:     html color code, need extra process to convert rgb tuples
-        self.viz_shape ={'shape':'box', 'size':[1, 1, 1], 'pos':[0, 0, 0], 'quat':[0, 0, 0, 1], 'color':'LightSlateGray'}       
+        self.viz_shape ={
+            'shape': 'box',
+            'size': [1, 1, 1],
+            'pos': [0, 0, 0],
+            'quat': [0, 0, 0, 1],
+            'color': 'LightSlateGray',
+        }       
                    
 class DOF:
     def __init__(self) -> None:
@@ -74,7 +85,7 @@ class ArticulatedSystem:
     def __init__(self, num_links=2) -> None:
         self.gravity = nplib.array([0, -9.81, 0])
         #links must be subject to a topological sort to ensure the index of parent link is before its successors.
-        self.links = [Link('link_{0}'.format(i)) for i in range(num_links)]
+        self.links = [Link(f'link_{i}') for i in range(num_links)]
         self.parents = [i-1 for i in range(num_links)]  # a single serial link chain
 
     def num_links(self):

@@ -67,8 +67,10 @@ class Transform(NamedTuple):
 
     
 class SpatialVector(NamedTuple):
-    ang: nplib.ndarray = nplib.zeros(3)     #angular velocity of the rigid body expressed in frame whose origin is coincidentally the reference point
-    lin: nplib.ndarray = nplib.zeros(3)     #linear velocity of the reference point on the body expressed in frame whose origin is coincidentally the reference point
+    ang: nplib.ndarray = nplib.zeros(3)     #angular velocity of the rigid body expressed in frame 
+                                            #whose origin is coincidentally the reference point
+    lin: nplib.ndarray = nplib.zeros(3)     #linear velocity of the reference point on the body 
+                                            #expressed in frame whose origin is coincidentally the reference point
 
     def __add__(self, v):
         return self.__class__(ang=self.ang+v.ang, lin=self.lin+v.lin)
@@ -180,9 +182,3 @@ class Inertia(NamedTuple):
     def apply_transform(self, t):
         transform = t.create_inverse().to_6dmat()
         return Inertia(inertia_tensor=transform.T@self.inertia_tensor@transform)
-    
-    
-
-
-
-
