@@ -5,7 +5,9 @@ from spatial_algebra import Transform, Motion
 import math_utils as math
 
 
-def transform_links(sys: ArticulatedSystem, q: list[float] | NDArray[Any]):
+def transform_links(
+    sys: ArticulatedSystem, q: list[float] | NDArray[Any]
+) -> list[Transform]:
     trans_list= []
     # for each n body: 
     for i in range(sys.num_links()):
