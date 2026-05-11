@@ -46,7 +46,7 @@ def forward_dynamics_aba(
             I_a_lst[parent] = I_a_lst[parent] + I_a_reduced.apply_transform(link_poses[i].create_inverse())
 
             p_a_prop = (p_a_lst[i]
-                        + I_a_lst[i].mul(zeta_lst[i])
+                        + I_a_reduced.mul(zeta_lst[i])
                         + U_lst[i] * (u_lst[i] / D_lst[i]))
             p_a_lst[parent] = p_a_lst[parent] + p_a_prop.apply_transform(link_poses[i].create_inverse())
 
@@ -61,17 +61,14 @@ def forward_dynamics_aba(
         parent = sys.parents[i]
         a_parent = a_lst[parent] if parent >= 0 else a_0
 
-        # Bring parent acceleration into link i's CoM frame.
-        a_parent_in_i = a_parent.apply_transform(link_poses[i])
+        # Bring parent acceleration into link i's CoM frame, then add the
+        # Coriolis bias c_i before solving for q̈ (Featherstone Algorithm 7.4).
+        a_tilde_i = a_parent.apply_transform(link_poses[i]) + zeta_lst[i]
 
         # Solve for joint acceleration (Featherstone eq. 7.28).
-        # dot_force gives the scalar S^T * a_parent, i.e. the component of
-        # parent acceleration along this joint's motion subspace.
-        qdd_i = (u_lst[i] - a_parent_in_i.dot_force(U_lst[i])) / D_lst[i]
+        qdd_i = (u_lst[i] - a_tilde_i.dot_force(U_lst[i])) / D_lst[i]
 
-        # Link acceleration = parent-carried acceleration + joint contribution
-        # + Coriolis bias (Featherstone eq. 7.27).
-        a_lst[i] = a_parent_in_i + S_ss_lst[i] * qdd_i + zeta_lst[i]
+        a_lst[i] = a_tilde_i + S_ss_lst[i] * qdd_i
 
         qdd.append(qdd_i[..., None])
 
@@ -109,9 +106,9 @@ if __name__ == "__main__":
 
     sys = ThreeLinks()
 
-    q = np.array([0,0,0] )
-    qd = np.array([0,0,0])
-    tau = np.array([1,0,0])
+    q = np.array([1,0.4,0.6] )
+    qd = np.array([3,1,2])
+    tau = np.array([1,2,0])
     
     qdd = forward_dynamics_aba(sys=sys, q=q, qd=qd, tau=tau)
 
@@ -122,5 +119,6 @@ if __name__ == "__main__":
     mujoco.mj_forward(model, data)
 
     print("\n=== RESULTS ===")
+    print(f"q: {q}, qd: {qd}, tau: {tau}")
     print("qdd (Ours):", qdd)
     print("qdd (MuJoCo):", data.qacc)
