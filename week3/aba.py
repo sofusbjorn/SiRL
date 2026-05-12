@@ -11,7 +11,6 @@ def forward_dynamics_aba(
     q: NDArray[Any],
     qd: NDArray[Any],
     tau: NDArray[Any],
-    verbose: bool = False,
 ) -> NDArray[Any]:
     """
     Implements Featherstone's Articulated Body Algorithm (ABA).
@@ -71,26 +70,6 @@ def forward_dynamics_aba(
         a_lst[i] = a_tilde_i + S_ss_lst[i] * qdd_i
 
         qdd.append(qdd_i[..., None])
-
-    if verbose:
-        print("\n=== DEBUG (q=0, qd=0, tau=0) ===")
-        print("S_ss_lst:")
-        for i, S in enumerate(S_ss_lst):
-            print(f"  link {i}: ang={S.ang}, lin={S.lin}")
-
-        print("\nlink_vel (CoM frame):")
-        for i, v in enumerate(link_vel):
-            print(f"  link {i}: ang={v.ang}, lin={v.lin}")
-
-        print("\nlink_poses (child→parent transforms):")
-        for i, T in enumerate(link_poses):
-            print(f"  link {i}: trans={T.trans}, rot={T.rot}")
-
-        print("\nLoop 2 results:")
-        for i in range(sys.num_links()):
-            print(f"  link {i}: D={D_lst[i]:.4f}, u={u_lst[i]:.4f}")
-
-        print("\na_0:", a_0)
 
     return np.concatenate(qdd, axis=-1).squeeze()
 
