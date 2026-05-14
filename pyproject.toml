@@ -4,12 +4,16 @@ version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
     "imageio>=2.37.3",
+    "jax>=0.10.0",
+    "keyboard>=0.13.5",
     "mujoco>=3.7.0",
+    "mujoco-mjx>=3.8.0",
     "natnet>=0.2.0",
     "numpy>=2.4.4",
     "scipy>=1.17.1",
     "stable-baselines3>=2.8.0",
     "ur-rtde>=1.6.3",
+    "warp-lang>=1.13.0",
 ]
 
 [dependency-groups]
