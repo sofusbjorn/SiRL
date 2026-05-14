@@ -7,6 +7,7 @@ dependencies = [
     "mujoco>=3.7.0",
     "natnet>=0.2.0",
     "numpy>=2.4.4",
+    "scipy>=1.17.1",
     "stable-baselines3>=2.8.0",
     "ur-rtde>=1.6.3",
 ]
