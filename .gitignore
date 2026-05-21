@@ -2,3 +2,4 @@
 *.pdf
 package.json
 package-lock.json
+*.obj
