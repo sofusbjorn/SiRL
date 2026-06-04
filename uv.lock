@@ -1640,6 +1640,16 @@ wheels = [
 ]
 
 [[package]]
+name = "math3d"
+version = "4.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/32/52/72a26a7d425501e652ce927be342d08ad228f5c6f7d843789c808360922e/math3d-4.0.0.tar.gz", hash = "sha256:83df636403c97a995fe4e422f34cb1561b44cfbe7aa19350143eb6e0247286c9", size = 43467, upload-time = "2023-08-03T13:53:33.789Z" }
+
+[[package]]
 name = "matplotlib"
 version = "3.10.9"
 source = { registry = "https://pypi.org/simple" }
@@ -2274,6 +2284,15 @@ source = { registry = "https://pypi.org/simple" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c2/f3/d86c845465a2723ad7e1e5c36dcd75ddb82898b3f53be47ebd429fb2fa5d/nvidia_nvtx-13.0.85-py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:4936d1d6780fbe68db454f5e72a42ff64d1fd6397df9f363ae786930fd5c1cd4", size = 148047, upload-time = "2025-09-04T08:29:01.761Z" },
     { url = "https://files.pythonhosted.org/packages/a8/64/3708a90d1ebe202ffdeb7185f878a3c84d15c2b2c31858da2ce0583e2def/nvidia_nvtx-13.0.85-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:cb7780edb6b14107373c835bf8b72e7a178bac7367e23da7acb108f973f157a6", size = 148878, upload-time = "2025-09-04T08:28:53.627Z" },
+]
+
+[[package]]
+name = "onrobot"
+version = "0.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a8/e9/e47935955756f541beca646ada8d3e6fbae91ffccc700996276a083089f2/onRobot-0.1.0.tar.gz", hash = "sha256:5f063a7d07490c3e2d84a9e1a03143d274162817d66eeec38cfb92161ee7e6fc", size = 2078, upload-time = "2024-01-31T20:32:13.146Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9c/ca/488be5dcd4fe403a24d507fb3e56e192cba653997e00111e96d5b3f0e9ec/onRobot-0.1.0-py2.py3-none-any.whl", hash = "sha256:bf3cef1159517fd7820cd438b178ed7b03a5293b47ca0af92e0da68fc091a686", size = 2486, upload-time = "2024-01-31T20:32:11.265Z" },
 ]
 
 [[package]]
@@ -5982,12 +6001,14 @@ dependencies = [
     { name = "mujoco-mjx" },
     { name = "natnet" },
     { name = "numpy" },
+    { name = "onrobot" },
     { name = "optimistix" },
     { name = "pip" },
     { name = "pythreejs" },
     { name = "scipy" },
     { name = "stable-baselines3" },
     { name = "ur-rtde" },
+    { name = "urx" },
     { name = "warp-lang" },
 ]
 
@@ -6014,12 +6035,14 @@ requires-dist = [
     { name = "mujoco-mjx", specifier = ">=3.8.0" },
     { name = "natnet", specifier = ">=0.2.0" },
     { name = "numpy", specifier = ">=2.4.4" },
+    { name = "onrobot", specifier = ">=0.1.0" },
     { name = "optimistix", specifier = ">=0.1.0" },
     { name = "pip", specifier = ">=26.1.1" },
     { name = "pythreejs", specifier = ">=2.4.2" },
     { name = "scipy", specifier = ">=1.17.1" },
     { name = "stable-baselines3", specifier = ">=2.8.0" },
     { name = "ur-rtde", specifier = ">=1.6.3" },
+    { name = "urx", specifier = ">=0.11.0" },
     { name = "warp-lang", specifier = ">=1.13.0" },
 ]
 
@@ -6348,6 +6371,15 @@ sdist = { url = "https://files.pythonhosted.org/packages/53/0c/06f8b233b8fd13b9e
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7f/3e/5db95bcf282c52709639744ca2a8b149baccf648e39c8cc87553df9eae0c/urllib3-2.7.0-py3-none-any.whl", hash = "sha256:9fb4c81ebbb1ce9531cce37674bbc6f1360472bc18ca9a553ede278ef7276897", size = 131087, upload-time = "2026-05-07T16:13:17.151Z" },
 ]
+
+[[package]]
+name = "urx"
+version = "0.11.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "math3d" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/77/18/fce662667c7e0cb19489f23f4274b1bdb0f244bd10b480d1fa5a8549dfb7/urx-0.11.0.tar.gz", hash = "sha256:8ccfb101ec2c424bbbf8c7550819c2d6d9dbaaa693580d55187f0c4e0f900b82", size = 17945, upload-time = "2018-02-01T07:40:49.171Z" }
 
 [[package]]
 name = "uvloop"
